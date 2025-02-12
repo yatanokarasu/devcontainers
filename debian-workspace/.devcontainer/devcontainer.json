@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    "name": "Debian Bullseye Workspace",
+
+    // See for details: https://github.com/devcontainers/images/blob/main/src/python/.devcontainer/devcontainer.json
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:bullseye",
+
+    "initializeCommand": "podman network ls --noheading | awk '{print $2}' | grep -q devnet || podman network create devnet",
+    "runArgs": [
+        "--name", "debian-workspace",
+        "--userns", "keep-id",
+        "--network", "devnet"
+    ],
+
+    "workspaceFolder": "/home/vscode/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "DavidAnson.vscode-markdownlint",
+                "mosapride.zenkaku",
+                "oderwat.indent-rainbow",
+                "shardulm94.trailing-spaces"
+            ]
+        }
+    },
+
+    "shutdownAction": "stopContainer",
+    "containerEnv": {
+        "TZ": "Asia/Tokyo"
+    },
+
+    "containerUser": "vscode"
+}
