@@ -1,0 +1,48 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    "name": "Java Workspace",
+
+    // See for details: https://mcr.microsoft.com/v2/devcontainers/java/tags/list
+    "image": "mcr.microsoft.com/vscode/devcontainers/java:21-bullseye",
+
+    "runArgs": [
+        "--name", "java-workspace",
+        "--userns", "keep-id"
+    ],
+
+    "workspaceFolder": "/home/vscode/workspace",
+    "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/home/vscode/workspace",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "java.search.scope": "all"
+            },
+
+            "extensions": [
+                "42Crunch.vscode-openapi",
+                "bierner.markdown-mermaid",
+                "bruno-api-client.bruno",
+                "DavidAnson.vscode-markdownlint",
+                "jebbs.plantuml",
+                "karatelabs.karate",
+                "mosapride.zenkaku",
+                "oderwat.indent-rainbow",
+                "oracle-labs-graalvm.micronaut",
+                "redhat.vscode-quarkus",
+                "shardulm94.trailing-spaces",
+                "SonarSource.sonarlint-vscode",
+                "vscjava.vscode-java-pack",
+                "vscjava.vscode-spring-initializr"
+            ]
+        }
+    },
+
+    "shutdownAction": "stopContainer",
+    "containerEnv": {
+        "TZ": "Asia/Tokyo"
+    },
+
+    "containerUser": "vscode"
+}
