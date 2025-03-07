@@ -3,7 +3,7 @@
     "name": "Java Workspace",
 
     // See for details: https://mcr.microsoft.com/v2/devcontainers/java/tags/list
-    "image": "mcr.microsoft.com/vscode/devcontainers/java:21-bullseye",
+    "image": "mcr.microsoft.com/devcontainers/java:21-bullseye",
 
     "runArgs": [
         "--name", "java-workspace",

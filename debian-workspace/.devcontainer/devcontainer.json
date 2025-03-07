@@ -3,7 +3,7 @@
     "name": "Debian Bullseye Workspace",
 
     // See for details: https://github.com/devcontainers/images/blob/main/src/python/.devcontainer/devcontainer.json
-    "image": "mcr.microsoft.com/vscode/devcontainers/base:bullseye",
+    "image": "mcr.microsoft.com/devcontainers/base:bullseye",
 
     "initializeCommand": "podman network ls --noheading | awk '{print $2}' | grep -q devnet || podman network create devnet",
     "runArgs": [
