@@ -5,19 +5,30 @@
     // See for details: https://mcr.microsoft.com/v2/devcontainers/java/tags/list
     "image": "mcr.microsoft.com/devcontainers/java:21-bullseye",
 
+    "initializeCommand": "podman network ls --noheading | awk '{print $2}' | grep -q devnet || podman network create devnet",
     "runArgs": [
         "--name", "java-workspace",
-        "--userns", "keep-id"
+        "--userns", "keep-id",
+        "--network", "devnet"
     ],
 
     "workspaceFolder": "/home/vscode/workspace",
     "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/home/vscode/workspace",
 
+    "features": {
+        // for SonarLint
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "latest"
+        }
+    },
+
     // Configure tool-specific properties.
     "customizations": {
         "vscode": {
             "settings": {
-                "java.search.scope": "all"
+                "java.search.scope": "all",
+                "java.import.gradle.java.home": "/usr/lib/jvm/msopenjdk-current",
+                "java.import.gradle.user.home": "/home/vscode"
             },
 
             "extensions": [
@@ -28,10 +39,13 @@
                 "jebbs.plantuml",
                 "karatelabs.karate",
                 "mosapride.zenkaku",
+                "NicolasVuillamy.vscode-groovy-lint",
                 "oderwat.indent-rainbow",
                 "oracle-labs-graalvm.micronaut",
                 "redhat.vscode-quarkus",
+                "richardwillis.vscode-spotless-gradle",
                 "shardulm94.trailing-spaces",
+                "shengchen.vscode-checkstyle",
                 "SonarSource.sonarlint-vscode",
                 "vscjava.vscode-java-pack",
                 "vscjava.vscode-spring-initializr"
